@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- tailwind css cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Amr Bank</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="text-5xl text-center capitalize">
+        welcome to <span class="font-semibold text-violet-900">My Bank</span>
+      </h1>
+    </header>
+
+    <main class="mt-5">
+      <section class="bg-amber-600 w-3/4 m-auto h-80">
+        <h3 class="text-white text-4xl font-semibold px-10 pt-10">
+          Please Login
+        </h3>
+        <div class="mt-10 px-10">
+          <input
+            type="email"
+            name=""
+            id="user-email"
+            class="block mb-5 w-8/12 p-1 rounded-lg"
+          />
+          <input
+            type="password"
+            name=""
+            id="user-password"
+            class="block mb-5 w-8/12 p-1 rounded-lg"
+          />
+          <button
+            type="submit"
+            class="btn bg-white text-black py-3 px-5 rounded-lg hover:bg-transparent hover:border-2 hover:border-white hover:text-white ease-in-out duration-300"
+            id="btn-submit"
+          >
+            Submit
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./js/login.js"></script>
+  </body>
+</html>
