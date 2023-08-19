@@ -1,38 +1,28 @@
 document.getElementById("btn-withdraw").addEventListener("click", function () {
-  // get withdraw input value
-  const inputWithdrawAmount = document.getElementById("withdraw-amount");
-  const newWithdrawAmount = inputWithdrawAmount.value;
-  const convertIntNewWithdrawAmount = parseFloat(newWithdrawAmount)
+  // get deposit input value from utility -> userInputValue function
+  const withdrawAmount = userInputValue("withdraw-amount");
 
-  // get default element which is changes
-  const withdrawTotalElement = document.getElementById("default-withdraw");
-  const previousWithdrawTotal = withdrawTotalElement.innerText;
-  const convertIntPreviousWithdrawTotal = parseFloat(previousWithdrawTotal)
+  // get previous element which is changes
+  const withdrawPreviousValue = previousValue("default-withdraw");
 
-  // clear deposit field
-  inputWithdrawAmount.value = "";
-
-  if (isNaN(convertIntNewWithdrawAmount)) {
+  if (isNaN(withdrawAmount)) {
     alert("please provide valid number");
     return;
   }
 
   // get previous main balance
-  const defaultBalance = document.getElementById("default-balance");
-  const previousDefaultBalance = defaultBalance.innerText;
-  const convertIntPreviousDefaultBalance = parseFloat(previousDefaultBalance);
-  
+  const mainBalancePreviousValue = previousValue("default-balance");
 
-  if (convertIntNewWithdrawAmount > convertIntPreviousDefaultBalance) {
+  if (withdrawAmount > mainBalancePreviousValue) {
     alert("eto tk nei");
     return;
   }
 
   //  add in withdraw section
-  const sumWithdraw = convertIntPreviousWithdrawTotal + convertIntNewWithdrawAmount;
-  withdrawTotalElement.innerText = sumWithdraw;
+  const calculateTotalWithdraw = withdrawPreviousValue + withdrawAmount;
+  setTextElementValue("default-withdraw", calculateTotalWithdraw);
 
   // deduct main balance
-  const sumMainBalance = convertIntPreviousDefaultBalance - convertIntNewWithdrawAmount;
-  defaultBalance.innerText = sumMainBalance;
+  const calculateMainBalance = mainBalancePreviousValue - withdrawAmount;
+  setTextElementValue("default-balance", calculateMainBalance);
 });

@@ -1,28 +1,22 @@
 document.getElementById("btn-deposit").addEventListener("click", function () {
-  // get deposit input value
-  const inputDepositAmount = document.getElementById("deposit-amount");
-  const newDepositAmount = inputDepositAmount.value;
+  // get deposit input value from utility -> userInputValue function
+  const depositAmount = userInputValue("deposit-amount");
 
-  // get default element which is changes
-  const depositTotalElement = document.getElementById("default-deposit");
-  const previousDepositTotal = depositTotalElement.innerText;
+  // get previous element which is changes
+  const depositPreviousValue = previousValue("default-deposit");
 
-  // clear deposit field
-  inputDepositAmount.value = "";
-
-  if (isNaN(parseFloat(newDepositAmount))) {
+  if (isNaN(depositAmount)) {
     alert("Please input valid Number");
     return;
   }
 
-  const sumDeposit = parseFloat(previousDepositTotal) + parseFloat(newDepositAmount);
-  depositTotalElement.innerText = sumDeposit;
+  const sumDeposit = depositPreviousValue + depositAmount;
+  setTextElementValue("default-deposit", sumDeposit);
 
   // get previous main balance
-  const defaultBalance = document.getElementById("default-balance");
-  const previousDefaultBalance = defaultBalance.innerText;
+  const mainBalancePreviousValue = previousValue("default-balance");
 
   // sum main balance
-  const sumMainBalance = parseFloat(previousDefaultBalance) + parseFloat(newDepositAmount);
-  defaultBalance.innerText = sumMainBalance;
+  const sumMainBalance = mainBalancePreviousValue + depositAmount;
+  setTextElementValue("default-balance", sumMainBalance);
 });
